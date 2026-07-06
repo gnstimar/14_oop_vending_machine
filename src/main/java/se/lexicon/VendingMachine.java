@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface VendingMachine {
     void insertCoin(int coinValue);
-    int returnRemaining();
+    void returnRemaining();
     Product purchaseProduct(int id);
     List<Product> getProducts();
 }

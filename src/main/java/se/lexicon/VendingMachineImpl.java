@@ -19,6 +19,10 @@ public class VendingMachineImpl implements VendingMachine{
         return balance;
     }
 
+    public void setBalance(int balance) {
+        this.balance = balance;
+    }
+
     @Override
     public void insertCoin(int coinValue) {
         if (EnumSet.allOf(Coin.class).stream().anyMatch(value -> value.value() == coinValue)) {
@@ -29,8 +33,13 @@ public class VendingMachineImpl implements VendingMachine{
     }
 
     @Override
-    public int returnRemaining() {
-        return 0;
+    public void returnRemaining() {
+        if (balance == 0) {
+            IO.println("No balance to return.");
+        } else {
+            IO.println("Change returned: " + balance + " kr");
+            setBalance(0);
+        }
     }
 
     @Override

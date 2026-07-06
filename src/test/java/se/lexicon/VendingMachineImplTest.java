@@ -22,4 +22,20 @@ public class VendingMachineImplTest {
         vendingMachineImpl.insertCoin(coinToInsert);
         Assertions.assertEquals(0 , vendingMachineImpl.getBalance());
     }
+
+    @Test
+    @DisplayName("Return change")
+    void returnChange() {
+        vendingMachineImpl.setBalance(50);
+        vendingMachineImpl.returnRemaining();
+        Assertions.assertEquals(0 , vendingMachineImpl.getBalance());
+    }
+
+    @Test
+    @DisplayName("There is nothing to return")
+    void noReturn() {
+        vendingMachineImpl.setBalance(0);
+        vendingMachineImpl.returnRemaining();
+        Assertions.assertEquals(0 , vendingMachineImpl.getBalance());
+    }
 }
