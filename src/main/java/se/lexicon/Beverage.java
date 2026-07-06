@@ -1,0 +1,15 @@
+package se.lexicon;
+
+public class Beverage extends Product{
+    private int volumeMl;
+
+    public Beverage(int id, String name, int price, int quantity, int volumeMl) {
+        super(id, name, price, quantity);
+        this.volumeMl = volumeMl;
+    }
+
+    @Override
+    public void describe() {
+        IO.println(getName() + " (" + this.getClass().getSimpleName() + ", " + volumeMl + " ml)");
+    }
+}
