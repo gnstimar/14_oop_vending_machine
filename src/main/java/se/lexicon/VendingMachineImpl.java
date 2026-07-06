@@ -49,7 +49,7 @@ public class VendingMachineImpl implements VendingMachine{
 
     @Override
     public List<Product> getProducts() {
-        return List.of();
+        return products;
     }
 
     private void addBalance() {

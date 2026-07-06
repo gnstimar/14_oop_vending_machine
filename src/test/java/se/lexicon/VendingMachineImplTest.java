@@ -38,4 +38,10 @@ public class VendingMachineImplTest {
         vendingMachineImpl.returnRemaining();
         Assertions.assertEquals(0 , vendingMachineImpl.getBalance());
     }
+
+    @Test
+    @DisplayName("getAllProducts()")
+    void getAllProducts() {
+        Assertions.assertEquals(3, vendingMachineImpl.getProducts().size());
+    }
 }
