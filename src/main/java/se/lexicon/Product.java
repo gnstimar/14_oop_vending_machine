@@ -18,4 +18,24 @@ public abstract class Product {
     public String getName() {
         return name;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void lowerQuantity() {
+        quantity -= 1;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }

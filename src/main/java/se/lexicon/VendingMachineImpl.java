@@ -1,8 +1,10 @@
 package se.lexicon;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
 
-public class VendingMachineImpl implements VendingMachine{
+public class VendingMachineImpl implements VendingMachine {
     private int balance = 0;
     private List<Product> products = new ArrayList<>();
 
@@ -44,7 +46,24 @@ public class VendingMachineImpl implements VendingMachine{
 
     @Override
     public Product purchaseProduct(int id) {
-        return null;
+        Product productToPurchase = products.stream().filter(product -> product.getId() == id).findFirst().orElse(null);
+        if (productToPurchase == null) {
+            IO.println("ERROR: Invalid id, there is no such product.");
+            return null;
+        } else if (productToPurchase.getQuantity() == 0) {
+            IO.println("ERROR: Stock is empty from this product. Try an other product.");
+            return null;
+        } else if (productToPurchase.getPrice() > balance) {
+            IO.println("ERROR: Insufficient balance. " + productToPurchase.getName() + " costs " + productToPurchase.getPrice() + " kr. You miss " + (productToPurchase.getPrice() - balance) + " kr.");
+            return null;
+        } else {
+            balance -= productToPurchase.getPrice();
+            productToPurchase.lowerQuantity();
+            if (balance > 0) {
+                returnRemaining();
+            }
+            return productToPurchase;
+        }
     }
 
     @Override
@@ -52,11 +71,4 @@ public class VendingMachineImpl implements VendingMachine{
         return products;
     }
 
-    private void addBalance() {
-
-    }
-
-    private void deductBalance() {
-
-    }
 }
