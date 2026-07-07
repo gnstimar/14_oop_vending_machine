@@ -9,7 +9,7 @@ public class Fruit extends Product {
     }
 
     @Override
-    public void describe() {
-        IO.println(getName() + " (" + this.getClass().getSimpleName() + ", Origin: " + origin + ")");
+    public String describe() {
+        return "(" + this.getClass().getSimpleName() + ", Origin: " + origin + ")";
     }
 }

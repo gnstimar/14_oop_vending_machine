@@ -13,7 +13,7 @@ public abstract class Product {
         this.quantity = quantity;
     }
 
-    public abstract void describe();
+    public abstract String describe();
 
     public String getName() {
         return name;

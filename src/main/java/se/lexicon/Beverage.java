@@ -1,6 +1,6 @@
 package se.lexicon;
 
-public class Beverage extends Product{
+public class Beverage extends Product {
     private int volumeMl;
 
     public Beverage(int id, String name, int price, int quantity, int volumeMl) {
@@ -9,7 +9,7 @@ public class Beverage extends Product{
     }
 
     @Override
-    public void describe() {
-        IO.println(getName() + " (" + this.getClass().getSimpleName() + ", " + volumeMl + " ml)");
+    public String describe() {
+        return "(" + this.getClass().getSimpleName() + ", " + volumeMl + " ml)";
     }
 }
